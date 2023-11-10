@@ -44,7 +44,7 @@
     </div>
 
     <div>
-        <button type="submit">
+        <button type="submit"  class="btn">
             @isset($task) Update Task @else Add Task @endisset
         </button>
     </div>
