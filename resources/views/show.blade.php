@@ -5,8 +5,8 @@
 @section('content')
 <p>{{$task->description}}</p>
 
-@if($task->long_description)
-    <p>{{$task->long_description}}</p>
+@if($task->description2)
+    <p>{{$task->description2}}</p>
 @endif
 
 <p>{{$task->created_at}}</p>
