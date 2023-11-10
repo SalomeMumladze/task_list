@@ -71,18 +71,12 @@ Route::get('/', function (){
     return redirect()->route('task.index');
 });
 
-Route::get('/tasks', function () use($tasks) {
-    return view('index', ['tasks'=>$tasks]);
+Route::get('/tasks', function (){
+    return view('index', ['tasks'=> \App\Models\Task::latest()->where('completed', true)->get()]);
 })->name('task.index');
 
-Route::get('/tasks/{id}', function ($id) use ($tasks){
-    // collect convert array to laravel object
-    $task = collect($tasks)->firstWhere('id', $id);
-
-    if(!$task){
-        abort(Response::HTTP_NOT_FOUND);
-    }
-
-    return view('show', ['task'=>$task]);
+Route::get('/tasks/{id}', function ($id){
+  
+    return view('show', ['task'=> \App\Models\Task::findOrFail($id)]);
 })->name('task.show');
 
